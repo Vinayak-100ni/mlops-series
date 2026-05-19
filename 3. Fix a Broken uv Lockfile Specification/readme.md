@@ -1,3 +1,6 @@
+# what is uv
+``` uv is a modern Python package and environment management tool created by Astral. ```
+
 # Python Dependency Lockfile Setup Using uv
 
 The xFusionCorp Industries ML team uses `uv` and lockfiles to keep Python dependencies reproducible across machines.
