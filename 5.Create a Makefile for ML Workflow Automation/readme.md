@@ -1,3 +1,4 @@
+```
 The xFusionCorp Industries ML team uses a Makefile to orchestrate common tasks—data processing, training, testing, and cleanup. A draft Makefile exists at /root/code/fraud-detection/Makefile, but make all does not complete successfully. Bring the Makefile in line with the team's standard.
 
 
@@ -16,3 +17,41 @@ All six target names must be declared as .PHONY so that Make never confuses them
 After your changes, make all must complete without error.
 
 Makefile recipes must be indented with a real tab character, not spaces. Make rejects any recipe that is not tab-indented.
+```
+```
+vi requirements.txt
+```
+```
+pytest
+```
+```
+cat > Makefile <<'EOF'
+.PHONY: setup data train test clean all
+
+setup:
+	python3 -m venv mlops-venv
+	mlops-venv/bin/pip install -r requirements.txt
+	mlops-venv/bin/pip install pytest
+
+data:
+	mlops-venv/bin/python src/data/process_data.py
+
+train:
+	mlops-venv/bin/python src/models/train.py
+
+test:
+	mlops-venv/bin/python -m pytest tests/
+
+clean:
+	find . -type d -name "__pycache__" -exec rm -rf {} +
+	rm -rf .pytest_cache
+	rm -rf models/*
+
+all: setup data train test
+EOF
+```
+
+```
+make clean
+make all
+```
