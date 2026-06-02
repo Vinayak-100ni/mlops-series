@@ -13,7 +13,6 @@ Once initialisation is complete, the DVC extension will detect the new .dvc/ dir
 
 with a DVC indicator in the bottom status bar.
 ```
-```
 cd /root/code/fraud-detection/
 
 # Initialize DVC
