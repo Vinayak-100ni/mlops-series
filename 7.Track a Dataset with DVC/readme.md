@@ -8,6 +8,7 @@
 
 ###  Stage the DVC pointer file and generated .gitignore
 ` git add data/raw/transactions.csv.dvc   `
+
 ` git add data/raw/.gitignore `
 
 ###  Record the change in Git
