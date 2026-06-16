@@ -9,5 +9,7 @@ dvc exp run -S n_estimators=500
 ```
 
 ### Apply it to the workspace:
-``` dvc exp show ```
-``` dvc exp apply exp-ghijkl(experiment name) ```
+```
+dvc exp show 
+dvc exp apply exp-ghijkl(experiment name)
+```
