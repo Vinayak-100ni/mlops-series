@@ -16,3 +16,31 @@ Switch back to the main branch and use dvc checkout to restore the v1 dataset on
 
 The DVC extension's DVC TRACKED section in the EXPLORER panel will reflect the current branch's tracked state—it should show different dataset hashes on
 main and v2-improved.
+
+```
+cd /root/code/fraud-detection
+
+# tag current main state
+git tag v1.0
+
+# create improved branch
+git checkout -b v2-improved
+
+# replace dataset with v2 contents
+cp data/raw/transactions_v2.csv data/raw/transactions.csv
+
+# re-track and reproduce
+dvc add data/raw/transactions.csv
+git add data/raw/transactions.csv.dvc .gitignore
+dvc repro
+
+# commit v2
+git add .
+git commit -m "Use improved dataset and reproduce pipeline"
+
+# return to main
+git checkout main
+
+# restore v1 tracked data
+dvc checkout
+```
