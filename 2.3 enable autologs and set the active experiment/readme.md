@@ -1,5 +1,4 @@
-### enable autologging for the sklearn flavour so that the subsequent model.fit(...) call records parameters, metrics, and
-### the trained model on the active experiment automatically.
+### enable autologging for the sklearn flavour so that the subsequent model.fit(...) call records parameters, metrics, and the trained model on the active experiment automatically.
 ```
 mlflow.sklearn.autolog()    
 ```
