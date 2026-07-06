@@ -2,7 +2,7 @@
 `` mlflow server --host 0.0.0.0 --port 5000 ``
 ## Set the tracking URI
 in linux 
-``` export MLFLOW_TRACKING_URI=http://localhost:5000 ```?
+``` export MLFLOW_TRACKING_URI=http://localhost:5000 ```
 in cmd 
 ``` set MLFLOW_TRACKING_URI=http://localhost:5000 ```
 ## run default parameter values from your MLproject
