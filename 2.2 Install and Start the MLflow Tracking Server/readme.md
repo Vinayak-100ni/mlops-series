@@ -1,5 +1,9 @@
 ### Install and start the mlfow tracking server 
 ```
+pip install --upgrade pip
+pip install mlflow
+```
+```
 mkdir -p /root/code/mlflow-backend
 mkdir -p /root/code/mlflow-artifacts
 ```
