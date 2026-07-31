@@ -1,23 +1,30 @@
-### install venv first:
-For Ubuntu/Debian:
+1. Install uv if not already installed
 ```
-sudo apt update
-sudo apt install python3-venv -y
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
-### Create the virtual environment
+reload shell
 ```
-python3 -m venv ml-env
+source ~/.local/bin/env 
 ```
-### To activate the virtual environment:
+
+Create the environment:
 ```
-source /root/code/ml-env/bin/activate
+uv venv mlflow-env --python 3.12
+source mlflow-env/bin/activate
 ```
+Install MLflow
+```
+uv pip install mlflow
+```
+Start MLflow
 ```
 mlflow server \
   --host 0.0.0.0 \
   --port 5000 \
-  --backend-store-uri sqlite:////root/code/mlflow-backend/mlflow.db \
-  --artifacts-destination /root/code/mlflow-artifacts \
+  --backend-store-uri sqlite:////home/ubuntu/mlflow-backend/mlflow.db \
+  --artifacts-destination /home/ubuntu/mlflow-artifacts \
   --cors-allowed-origins '*' \
   --allowed-hosts '*'
 ```
+
+
