@@ -53,5 +53,23 @@ with mlflow.start_run(run_name="logging"):
     artifact_path = "/home/ubuntu/lossgraph.webp"
     mlflow.log_artifact(artifact_path)
 ```
+log table 
+```
+import kagglehub
+import mlflow
+import pandas as pd
 
+    demo_df = pd.DataFrame({"name" : ["Dan","sam"]})
+    mlflow.log_table(demo_df, "file_name.json")
+
+
+    # Download latest version
+    path = kagglehub.dataset_download("yasserh/titanic-dataset")
+
+    print("Path to dataset files:", path)
+
+
+    read_table = pd.read_csv("/root/.cache/kagglehub/datasets/yasserh/titanic-dataset/versions/1/Titanic-Dataset.csv")
+    mlflow.log_table( read_table, "test.json")
+```
 
