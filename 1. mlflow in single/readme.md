@@ -26,5 +26,29 @@ mlflow server \
   --cors-allowed-origins '*' \
   --allowed-hosts '*'
 ```
+load metrics and params
+```
+import mlflow
+
+mlflow.set_tracking_uri("http://204.236.221.134:5000")
+mlflow.set_experiment("vinayak")
+
+with mlflow.start_run(run_name="logging"):
+    mlflow.log_param("learning_rate", 0.03)
+
+    parameters = {
+     "learning" : 0.04,
+     "epoch1" : 200
+    }
+    mlflow.log_params(parameters)
+
+    # metrics
+
+    metrics = {
+       "accuracy" : 0.99,
+       "accuracy1" : 0.88
+    }
+    mlflow.log_metrics(metrics)
+```
 
 
