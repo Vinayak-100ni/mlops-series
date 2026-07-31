@@ -49,6 +49,9 @@ with mlflow.start_run(run_name="logging"):
        "accuracy1" : 0.88
     }
     mlflow.log_metrics(metrics)
+
+    artifact_path = "/home/ubuntu/lossgraph.webp"
+    mlflow.log_artifact(artifact_path)
 ```
 
 
