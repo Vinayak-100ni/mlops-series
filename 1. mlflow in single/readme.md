@@ -118,3 +118,14 @@ export MLFLOW_TRACKING_URI=http://100.26.43.38:5000
 mlflow models serve   -m "models:/FraudModel/1"   -p 4560   --host 0.0.0.0   --no-conda
 
 ```
+
+### load model 
+```
+import mlflow
+
+model_uri = 'models:/FraudModel/1'
+
+mlflow_model = mlflow.sklearn.load_model(model_uri)
+
+print(mlflow_model)
+```
