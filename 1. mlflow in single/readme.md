@@ -73,3 +73,42 @@ import pandas as pd
     mlflow.log_table( read_table, "test.json")
 ```
 
+### Log and register the model 
+```
+import mlflow
+import pandas as pd
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+# Load the Iris dataset
+X, y = datasets.load_iris(return_X_y=True)
+
+# Split the data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Define the model hyperparameters
+params = {
+    "solver": "lbfgs",
+    "max_iter": 1000,
+    "random_state": 8888,
+}
+
+
+mlflow.set_tracking_uri("http://54.227.39.114:5000")
+mlflow.set_experiment("sk_learn")
+
+with mlflow.start_run(run_name="model"):  # Start an MLflow run
+    lr = LogisticRegression(**params)     # Create model with hyperparameters
+    lr.fit(X_train, y_train)              # Train the model
+
+
+    mlflow.sklearn.log_model(             # Save trained model to MLflow
+        sk_model=lr,                         # The trained sklearn model
+        name="fraud_detection_model",       # Model artifact name
+        input_example=X_train[:5],          # Example input
+        registered_model_name="FraudModel"  # Register in Model Registry
+    )
+    mlflow.log_params(params)             # Log hyperparameters to MLflow<F2>
+```
