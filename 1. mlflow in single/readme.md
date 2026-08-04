@@ -119,13 +119,26 @@ mlflow models serve   -m "models:/FraudModel/1"   -p 4560   --host 0.0.0.0   --n
 
 ```
 
-### load model 
+### load model and manage the prompt
 ```
 import mlflow
 
-model_uri = 'models:/FraudModel/1'
+prompt_v1 = """\
+        you are a helpfull assitant
 
-mlflow_model = mlflow.sklearn.load_model(model_uri)
+        Question: {{ question }} and User: {{ user_name }}
+        """
 
-print(mlflow_model)
+## create the prompt
+mlflow.set_tracking_uri("http://107.21.29.105:5000")
+mlflow.genai.register_prompt(
+        name = "FAQ",
+        template=prompt_v1,
+        commit_message="version 1 prompt"
+        )
+## load the prompt
+
+prompt = mlflow.genai.load_prompt("prompts:/FAQ/2")
+
+print(prompt.format(question="How is the weather", user_name="Vinayak")) # we can pass multiple parameters
 ```
