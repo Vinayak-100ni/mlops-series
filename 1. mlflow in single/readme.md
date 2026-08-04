@@ -119,7 +119,7 @@ mlflow models serve   -m "models:/FraudModel/1"   -p 4560   --host 0.0.0.0   --n
 
 ```
 
-### load model and manage the prompt
+### Create , load model and manage the prompt
 ```
 import mlflow
 
